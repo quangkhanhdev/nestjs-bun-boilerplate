@@ -5,7 +5,7 @@
   },
   "description": "",
   "license": "UNLICENSED",
-  "name": "chat-app",
+  "name": "nestjs-boilerplate",
   "private": true,
   "scripts": {
     "build": "bunx nest build",
