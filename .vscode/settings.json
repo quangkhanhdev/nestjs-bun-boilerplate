@@ -1,0 +1,6 @@
+{
+  "cSpell.ignorePaths": ["**/*.json"],
+  "editor.codeActionsOnSave": {
+    "source.action.useSortedKeys.biome": "explicit"
+  }
+}
