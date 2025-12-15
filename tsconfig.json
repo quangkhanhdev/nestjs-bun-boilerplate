@@ -2,6 +2,10 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./src/*"]
+    },
     "declaration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -9,13 +13,12 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "isolatedModules": true,
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "noFallthroughCasesInSwitch": false,
     "noImplicitAny": false,
     "outDir": "./dist",
     "removeComments": true,
-    "resolvePackageJsonExports": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strictBindCallApply": false,

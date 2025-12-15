@@ -29,6 +29,15 @@ lerna-debug.log*
 *.sublime-workspace
 
 # IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Prisma
+# Uncomment if you generate Prisma Client to a custom location
+# /generated
 
 # dotenv environment variable files
 .env
@@ -49,3 +58,27 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Docker
+docker-compose.override.yml
+*.dockerignore.local
+
+# Bun
+.bun
+
+# Cache
+.cache
+.parcel-cache
+.next
+.nuxt
+.turbo
+
+# Misc
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# REST Client extension
+*.http
