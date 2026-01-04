@@ -9,10 +9,12 @@ RUN cd /temp/dev && bun install --frozen-lockfile
 
 # ------------------------ STAGE 2 ----------------------------
 FROM base AS builder
+ENV DATABASE_URL="postgresql://db_user:admin123@postgres_db:5432/nestjs_app?schema=test"
 
 COPY --from=dev-deps /temp/dev/node_modules ./node_modules
 COPY . .
 
+RUN bun db:gen
 RUN bun run build
 
 # ------------------------ STAGE 3 ----------------------------
@@ -25,9 +27,12 @@ RUN cd /temp/prod && bun install --frozen-lockfile --production
 FROM base AS release
 
 COPY --from=prod-deps /temp/prod/node_modules ./node_modules
+COPY --from=builder /usr/src/app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /usr/src/app/dist ./dist
+# require prisma schema and prisma config file for migrate deploy
+COPY --from=builder /usr/src/app/prisma ./prisma
+COPY --from=builder /usr/src/app/prisma.config.ts ./
 
 ENV NODE_ENV=production
-EXPOSE 3000/tcp
 
-CMD [ "bun", "dist/main.js" ]
+CMD ["sh", "-c", "bunx prisma migrate deploy && bun dist/main.js"]

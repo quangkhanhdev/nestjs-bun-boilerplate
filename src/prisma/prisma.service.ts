@@ -15,6 +15,7 @@ export class PrismaService extends PrismaClient implements OnModuleDestroy, OnMo
   }
 
   async onModuleInit() {
+    console.log({DB_URL: process.env.DATABASE_URL})
     await this.$connect()
   }
 

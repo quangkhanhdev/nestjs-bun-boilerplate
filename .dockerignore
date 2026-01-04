@@ -33,3 +33,5 @@ spec
 # Environment
 .env
 .env.*
+
+/prisma/*.log

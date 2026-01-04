@@ -1,0 +1,32 @@
+services:
+  postgres_db:
+    image: postgres:alpine
+    container_name: pg_db
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: nestjs_app
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - my-network
+
+  server:
+    build: .
+    container_name: nestjs_server
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: "postgresql://db_user:admin123@postgres_db:5432/nestjs_app?schema=test"
+    depends_on:
+      - postgres_db
+    networks:
+      - my-network
+
+volumes:
+  pg_data:
+
+networks:
+  my-network:

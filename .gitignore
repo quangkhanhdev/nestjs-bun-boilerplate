@@ -80,5 +80,9 @@ docker-compose.override.yml
 .DS_Store
 Thumbs.db
 
+# Prisma genrated file exclude
+/prisma/*.log
+
+
 # REST Client extension
 *.http
