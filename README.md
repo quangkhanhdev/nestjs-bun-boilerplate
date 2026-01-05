@@ -25,7 +25,7 @@ A production-ready NestJS boilerplate with PostgreSQL, Prisma ORM, and Docker su
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/quangkhanhdev/nestjs-bun-boilerplate
    cd nestjs-bun-boilerplate
    ```
 
